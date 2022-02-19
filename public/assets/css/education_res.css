@@ -1,0 +1,495 @@
+
+
+@media (max-width: 575px) {
+
+
+  /* footer  */
+  .category-sortby select {
+      width: 20rem;
+    }
+  .scroll.icon {
+    position: absolute;
+    right: -3px;
+    bottom: 19px;
+    /* width: 4rem; */
+    height: 2rem;
+    background: #e07c00;
+    padding: 10px;
+    padding-top: 4px;
+    text-align: center;
+    margin: 1px;
+    cursor: pointer;
+    transition: .5s;
+    -moz-transition: .5s;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    border-radius: 5% ! important;
+    color: #fff;
+}
+
+.scrolltop {
+    bottom: 35px;
+    display: none;
+    position: fixed;
+    right: 12px;
+    width: 52px;
+    z-index: 9999;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    display: none;
+}
+.scrolltop .scroll .fa {
+    font-size: 15px;
+}
+.copyright-area {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #e07c00;
+    margin-top: 30px;
+}
+.copyright-area p {
+    color: #ffffff;
+    font-size: 13px;
+}
+/* Logout */
+
+/* date picker  */
+.react-datepicker__month-container {
+    float: left;
+    width: 11rem;
+}
+.react-datepicker__navigation--next--with-time:not(.react-datepicker__navigation--next--with-today-button) {
+    right: 92px;
+}
+.react-datepicker__portal .react-datepicker__current-month, .react-datepicker__portal .react-datepicker-time__header {
+    font-size: 9px;
+}
+.react-datepicker__portal .react-datepicker__day-name, .react-datepicker__portal .react-datepicker__day, .react-datepicker__portal .react-datepicker__time-name {
+    width: 1rem;
+    line-height: 2rem;
+    font-size: 11px;
+}
+/* end date picker  */
+.signup .card-header {
+    padding: 15px;
+}
+.signup .card-header .h5, .signup .card-header h5 {
+    font-size: 15px;
+}
+.error {
+    color: red;
+    font-size: 14px;
+}
+#content-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+#logout .fa-5x {
+    font-size: 2em;
+    color: #e07c00;
+}
+#logout .block-title {
+    font-size: 18px!important;
+    text-transform: inherit;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    line-height: 8px!important;
+}
+/* Customer ticket information */
+#ticket-info-card .fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+#ticket-info-card .fileUpload img {
+    height: 5rem;
+    width: 5rem;
+}
+/* Ticket list responsive */
+.form-control {
+  height: 40px;
+  font-size: 14px;
+  padding: 8px 18px;
+  border-radius: 0;
+  }
+.card-ticket .ticket-id {
+    font-size: 15px;
+}
+.card-ticket .btn-outine {
+    padding: 2px;
+    font-size: 12px;
+}
+.card-ticket hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+.card-ticket .ticket-title {
+    font-size: 12px;
+}
+.card-ticket .btn {
+    font-size: 12px;
+        padding: 3px 5px!important;
+}
+.card-ticket .fa-lg {
+font-size: 11px;
+}
+
+/* Pagination */
+.pagination {
+    box-shadow:none;
+    padding: 3px;
+}
+.pagination a {
+    padding: 0.1rem 0.6rem;
+        font-size: 14px;
+}
+/* END Ticket list responsive */
+
+/* Add Service */
+
+.card-add-service .card-title {
+    font-size: 15px;
+}
+i.fa.fa-plus-circle.fa-5x {
+    font-size: 3em;
+}
+.card-stripe .add_image {
+    padding: 1rem 1rem !important;
+    width: 5rem;
+    height: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.card-ticket-time.text-center{
+    font-size: 11px;
+}
+.fileUpload .fa {
+  font-size: 3em;
+  width: 4rem;
+  height: 4rem;
+}
+/*END  Add Service */
+/* Home Page */
+.card-step h4 {
+    font-size: 15px;
+}
+.card-stripe .card-stripe-ul {
+    list-style: none;
+    /* display: table-footer-group; */
+}
+.btn {
+    font-size: 14px;
+}
+.mobile-center
+{
+  text-align: center;
+}
+span.badge {
+    font-size: 12px;
+}
+  .first-section-content.text-center {
+      color: #fff;
+      padding: 1rem;
+      font-size: 1px;
+  }
+  .first-section .slide-text {
+    font-size: 1.3rem;
+  }
+  .first-section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.single-services {
+  padding: 1.5px;
+  margin-bottom: 10px;
+}
+.services-area {
+    padding-bottom: 10px;
+}
+.ptb-100 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.services-area .section-title {
+    margin-bottom: 10px;
+    position: relative;
+}
+.services-area .section-title h3 {
+  font-size: 21px;
+  font-weight: 700;
+  text-transform: capitalize;
+  line-height: 38px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.single-services .icon {
+    margin-top: 1.5rem;
+}
+.single-services h3 {
+    font-size: 13px;
+}
+.single-services .icon {
+    background: #f4f6fd;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    color: #e07c00;
+    line-height: 45px;
+    border-radius: 5px;
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    transition: .4s;
+}
+.account-box .uinfo .nav a {
+    font-size: 12px;
+}
+#ticket-info-card .btn {
+    font-size: 11px;
+}
+.form-header {
+      margin-top: -38px;
+  margin-bottom: 1rem;
+}
+.account-box .card {
+  margin-bottom: 1.5rem;
+}
+/* footer  */
+.footer-area {
+    padding-top: 20px;
+}
+
+  .react-redux-modal .rrm-holder .scroll .rrm-content .rrm-body {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .react-redux-modal .rrm-holder .scroll .rrm-content .rrm-title h2 {
+    width: 70%!important;
+    float: left;
+    font-size: 18px;
+}
+  .react-redux-modal .rrm-holder .scroll .rrm-content.m-xlarge {
+    width: 96%;
+  }
+  .react-redux-modal .rrm-holder .scroll .rrm-content.m-large {
+    width: 98%;
+  }
+  .react-redux-modal .rrm-holder .scroll .rrm-content {
+    margin: 40px auto;
+  }
+  .index-name {
+      top: -13px;
+      left: -18px;
+      width: 20px;
+    }
+  .uinfo .nav-link {
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    border: 1px solid #eceeef;
+    margin-bottom: 0.3rem;
+    margin-right: 0.2rem;
+    font-size: 0.8rem;
+  }
+  .uinfo {
+    padding: 1rem 0rem 0rem 0rem;
+  }
+  .account-box .uinfo .nav a {
+      padding: 5px;
+  }
+  .account-box .uinfo .nav {
+    padding: 6px 5px 0px 4px;
+    margin-top: 0rem;
+    text-align: center;
+  }
+  .account-box .account-points {
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
+  .account-box .react-bs-table .table-bordered>thead>tr>td, .react-bs-table .table-bordered>thead>tr>th {
+    border-bottom-width: 1px;
+  }
+  .account-box .react-bs-table-pagination {
+    padding-left: 5px;
+    padding-right: 2px;
+    height: 40px;
+  }
+  /* Account Section  */
+  .account-box .card-header {
+      color: #292929;
+      font-size: 13px;
+      font-weight: 500;
+  }
+  /* Common Table  */
+  .table-responsive {
+    display: inline-table ! important;
+    width: 100%;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.table-responsive {
+    overflow-x: auto;
+    min-height: .01%;
+}
+
+.df-table table {
+  margin: auto;
+  border-collapse: collapse;
+  overflow-x: auto;
+  width: fit-content;
+  width: 100%;
+  width: 100%;
+  border: 0;
+  overflow-x: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.fa-5x {
+    font-size: 5em;
+}
+.block-title {
+    font-size: 20px!important;
+    text-transform: inherit;
+    letter-spacing: .02em;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    line-height: 10px!important;
+}
+.df-table td, .df-table th {
+    border: solid #eceeef 1px;
+  padding: .5rem;
+}
+
+.df-table th {
+  text-align: left;
+  text-transform: uppercase;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: none;
+}
+
+.df-table td {
+  white-space: nowrap;
+  border-bottom: none;
+  color: rgb(20, 20, 20);
+}
+
+.df-table td:first-of-type, .df-table th:first-of-type {
+  border-left: none;
+}
+
+.df-table td:last-of-type, .df-table th:last-of-type {
+  border-right: none;
+}
+.df-table .table td, .df-table .table th {
+    padding: .5rem;
+    border-top: 1px solid #eceeef;
+    font-size: 12px;
+}
+table.table.table-hover.table-bordered.table-striped.df-table.ticket-history th {
+    padding: .5rem;
+    border-top: 1px solid #eceeef;
+    font-size: 8px;
+}
+.df-table .table .btn-group-sm>.btn, .df-table .table .btn-sm {
+    font-size: 11px;
+    border-radius: .2rem;
+}
+/* Pagination  */
+.react-bs-table-pagination>.row>div {
+    display: inline-flex;
+    width: 50%;
+}
+.react-bs-table-pagination>.row>div> span {
+    font-size: 11px ! important;
+}
+.contact-location-card {
+    margin-top: 1rem;
+}
+.title-block .img-thumbnail {
+    border-radius: 50% ! important;
+    height: 4rem;
+    width: 4em;
+  }
+  .account-box .title-block h4 {
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+    font-size: 18px;
+}
+.uinfo .btn-edit-profile {
+    border-radius: 50%!important;
+    border-radius: 50%;
+    padding: 7px 10px;
+    position: absolute;
+    margin-left: 1rem;
+    margin-right: auto;
+    margin-top: -0.7rem;
+    color: #fff;
+    background-color: #e07c00;
+    border-color: #e07c00;
+}
+/* new card of list view of ticket  */
+.ticket-date {
+  font-size: 11px;
+}
+.card-ticket {
+    padding: 6px 6px 6px;
+}
+select.form-control {
+    height: 40px ! important;
+}
+.filter-status-tickets .btn {
+    font-size: 12px;
+}
+.btn-add-ticket {
+    padding: 4px;
+}
+.card-ticket:hover .colored-side {
+    width: 21%;
+}
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  .react-redux-modal .rrm-holder .scroll .rrm-content.m-xlarge {
+    width: 96%;
+  }
+  .react-redux-modal .rrm-holder .scroll .rrm-content .rrm-title h2 {
+    width: 70%!important;
+    float: left;
+    font-size: 18px;
+  }
+  .react-redux-modal .rrm-holder .scroll .rrm-content.m-large {
+    width: 98%;
+  }
+  .react-redux-modal .rrm-holder .scroll {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow-y: auto;
+      z-index: 1;
+  }
+  .form-header {
+        margin-top: -38px;
+    margin-bottom: 1rem;
+  }
+  .account-box .card {
+    margin-bottom: 1.5rem;
+}
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .react-redux-modal .rrm-holder .scroll .rrm-content.m-xlarge {
+    width: 96%;
+  }
+
+}
