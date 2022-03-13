@@ -14,7 +14,7 @@ class AccountLogout extends Component {
           <div className="container mb-3 mt-3">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div className="card-block">
+                  <div className="card-body">
                     <div className="well text-muted text-center cart-empty sk-heading">
                       <i className="fa fa-shopping-basket fa-5x m-b-1 sk-heading"></i>
                         <h1 className="block-title large">Account Logout</h1>

@@ -76,7 +76,7 @@ class AccountOTPLogin extends Component {
                 <div className="card">
 
                       <div className="card-header"><h5 className="m-0"> Resident Sign In</h5></div>
-                      <div className="card-block">
+                      <div className="card-body">
                         {
                           errorMessage
                           ?

@@ -3,10 +3,12 @@ import { Route, Switch } from "react-router-dom";
 import Home from "../container/common/home";
 import CatalogPageInformation from "../container/catalog/page_info";
 // Customer
-import AccountLogin from "../container/account/signin";
 import AccountOTPLogin from "../container/account/otp_signin";
 import AccountLogout from "../container/account/logout";
-import Signup from "../container/account/signup";
+// 
+
+import RouteCustomer from './route_customer';
+import Customer from "../container/account/customer";
 import AccountOtp from "../container/account/otp";
 import AccountDashboard from "../container/account/dashboard";
 import AccountLayout from "../container/account/layout";
@@ -27,21 +29,22 @@ import ProviderAccountTicketInfo from "../container/provider/ticket_info";
 const rootRoute = (
   <Switch>
     <Route exact path="/" component={Home} />
+
     <Route exact path="/page/:keyword" component={CatalogPageInformation} />
     <Route exact path="/page/info/:page_id" component={CatalogPageInformation} />
-    <Route exact path="/signup" component={Signup} />
-    <Route exact path="/otp_signin" component={AccountOTPLogin} />
-    <Route exact path="/signin" component={AccountLogin} />
+
+    {/* customer route */}
+    <Route exact path="/customer" component={Customer} />
+    <Route exact path="/otp_signin" component={AccountOTPLogin} />>
     <Route exact path="/logout" component={AccountLogout} />
     <Route exact path="/otp" component={AccountOtp} />
  
-    
-    <Route exact path="/account" component={AccountLayout} />
-    <Route exact path="/account/account_dashboard" component={AccountDashboard} />
-    <Route exact path="/account/ticket" component={AccountTicket} />
-    <Route exact path="/account/past/ticket" component={AccountPastTicket} />
-    <Route exact path="/account/ticket/add" component={AccountTicketAdd} />
-    <Route exact path="/account/ticket/info/:ticket_id" component={AccountTicketInfo} />
+    {/* customer account route  */}
+    <RouteCustomer exact path="/account" component={AccountDashboard} />
+    <RouteCustomer exact path="/account/ticket" component={AccountTicket} />
+    <RouteCustomer exact path="/account/past/ticket" component={AccountPastTicket} />
+    <RouteCustomer exact path="/account/ticket/add" component={AccountTicketAdd} />
+    <RouteCustomer exact path="/account/ticket/info/:ticket_id" component={AccountTicketInfo} />
   
     <Route exact path="/provider" component={ProviderAccountLayout} />
     <Route exact path="/provider_otp" component={ProviderOtp} />

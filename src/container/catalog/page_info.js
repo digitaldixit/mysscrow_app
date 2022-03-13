@@ -60,7 +60,7 @@ class CatalogPageInformation extends Component {
             		<div className="card-page-description">
                   <div className="card page p-3 text-center">
                     <h2>{pageinfo.title}</h2>
-                    <div className="card-block p-0">
+                    <div className="card-body p-0">
                     {lib.Decodetohtml(pageinfo.description)}
                     </div>
                   </div>

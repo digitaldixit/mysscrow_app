@@ -83,7 +83,7 @@ class ProviderOtp extends Component {
                     <h5 className="pseudo_border m-0">Login with OTP</h5>
                   </div>
                   <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                    <div className="card-block">
+                    <div className="card-body">
                       {
                         isError
                         ?

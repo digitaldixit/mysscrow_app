@@ -1,12 +1,11 @@
 
-import { input, textarea, Loading ,lib } from '../library/elements';
-import { modal } from '../library/elements/modal';
-import React,  { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field,reduxForm } from 'redux-form'
-import { Link } from 'react-router-dom';
+import { Link,withRouter  } from "react-router-dom";
+import { Field, reduxForm } from 'redux-form';
 import { forgotPassword } from '../account/account_action';
-import { Button } from 'react-bootstrap';
+import { input } from '../library/elements';
+
 class ModalAccountFrogotPassword extends Component {
 
   constructor(props) {
@@ -24,7 +23,7 @@ class ModalAccountFrogotPassword extends Component {
       if(result) {
         _this.setState({ isLoading: false });
         _this.props.removeModal();
-        // browserHistory.push('/signin');
+        _this.props.history.push("/customer");
       }
     });
   }
@@ -39,7 +38,7 @@ class ModalAccountFrogotPassword extends Component {
   }
   goSignup() {
   this.props.removeModal();
-  // browserHistory.push('/signup');
+  this.props.history.push("/customer");
 }
   render() {
     const { handleSubmit ,submitting ,errorMessage } = this.props;
@@ -75,7 +74,7 @@ class ModalAccountFrogotPassword extends Component {
                   </div>
                   <div className="form-group row">
                     <div className="col-sm-12 text-center">
-                      New to Mysscrow? <Link className="form-link" onClick={() => this.goSignup()} to="/signup">Register Now</Link>
+                      New to Mysscrow? <Link className="form-link" onClick={() => this.goSignup()}>Register Now</Link>
                     </div>
                   </div>
                 </form>
@@ -112,4 +111,6 @@ ModalAccountFrogotPassword = reduxForm({
   validate: validate
 })(ModalAccountFrogotPassword);
 
-export default connect(mapStateToProps, {forgotPassword})(ModalAccountFrogotPassword);
+export default withRouter(connect(mapStateToProps, { forgotPassword })(
+  (ModalAccountFrogotPassword)
+  ));

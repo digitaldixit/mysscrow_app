@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { input, Loading } from '../library/elements';
 import { loginOTP, resendOTP } from './account_action';
@@ -15,7 +15,7 @@ class AccountOtp extends Component {
 
   componentWillMount(){
     if(!this.props.login_phone){
-    //  browserHistory.push('/otp_signin');
+    this.props.history.push('/otp_signin');
     }
   }
 
@@ -29,7 +29,7 @@ class AccountOtp extends Component {
         _this.setState({ isLoading: false });
         _this.setState({ isError: result.error });
       } else {
-        _this.props.history.push('/');
+        _this.props.history.push('/account');
       }
     });
   }
@@ -83,7 +83,7 @@ class AccountOtp extends Component {
                     <h5 className="pseudo_border m-0">Login with OTP</h5>
                   </div>
                   <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                    <div className="card-block">
+                    <div className="card-body">
                       {
                         isError
                         ?
@@ -166,4 +166,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { loginOTP, resendOTP })(AccountOtp);
+export default withRouter(connect(mapStateToProps, { loginOTP, resendOTP })(AccountOtp));

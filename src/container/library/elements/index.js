@@ -9,6 +9,7 @@ import Breadcrumbs from './breadcrumbs';
 import AlertTop  from './alert_top';
 import InputImage from './image';
 import * as lib from './library';
+import PillsBox from './pills_box';
 
 export {
   input,
@@ -20,5 +21,6 @@ export {
   Breadcrumbs,
   AlertTop,
   InputImage,
-  lib
+  lib,
+  PillsBox
 };

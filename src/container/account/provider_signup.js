@@ -128,7 +128,7 @@ class ProviderSignup extends Component {
                  
                 <form className="cm-frm" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="signup-form df-form">
                         {this.renderAlert()}
-                        <div className="card-block">
+                        <div className="card-body">
                           <div className="row form-group">
                             <div className="col-sm-6">
                               <Field name="firstname" type="text" component={input} label="* First Name" isBorderError={true} className="form-control"/>

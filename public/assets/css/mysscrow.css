@@ -4,7 +4,9 @@ body {
   padding: 0;
   margin: 0;
 }
-
+a {
+  text-decoration: none;
+}
 a:focus,
 a:hover {
   text-decoration: none;
@@ -279,7 +281,7 @@ Heading CSS
 .first-section {
   z-index: 1;
   position: relative;
-  background-image: url("http://trystack.mediumra.re/img/agency-4.jpg");
+  background-image: url("../image/background/mysscrow-1.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -291,10 +293,10 @@ Heading CSS
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 11rem;
+  padding-top: 13rem;
   box-shadow: inset -8px -12px 20px 20px rgba(0, 0, 0, 0.7);
   box-shadow: inset 1px 11px 250px rgba(0, 0, 0, 0.7);
-  padding-bottom: 11rem;
+  padding-bottom: 37rem;
 }
 .first-section-content.text-center {
   color: #fff;
@@ -303,12 +305,7 @@ Heading CSS
 /*=============================
 Cusomer Ragister  CSS
 ===============================*/
-.card {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05),
-    0 3px 1px -2px rgba(0, 0, 0, 0.08), 0 1px 5px 0 rgba(0, 0, 0, 0.08);
-  position: relative;
-  border: 0;
-}
+
 /*=============================
 Form control  CSS
 ===============================*/
@@ -338,7 +335,8 @@ select.form-control {
   border-color: #592c82;
 }
 .error {
-  color: red;
+  color: #d77373;
+  font-size: 13px;
 }
 
 .cm-frm .btn {
@@ -610,11 +608,7 @@ footer.footer {
   background-color: #592c82;
   border-color: #592c82;
 }
-.rounded-circle {
-  border-radius: 50%;
-  width: 6rem;
-  height: 6rem;
-}
+
 .account-box .nav {
   border-bottom: 1px solid #eceeef;
   background: #fff;
@@ -1473,7 +1467,7 @@ button.btn.btn-sm.btn-secondary.password-mask {
 .img-responsive {
   width: 100%;
 }
-.card-block.view-card {
+.card-body.view-card {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 3px;
 }
@@ -1697,15 +1691,7 @@ hr {
   background-color: #cee0ed;
   border-color: #cee0ed;
 }
-.btn {
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-  border: none;
-  border-radius: 2px;
-  color: #fff !important;
-}
+
 /* Pagination */
 /*Pagination----------------------------*/
 .pagination {
@@ -2026,3 +2012,124 @@ span.m-ticket-date {
 	color: #fff;
   }
   /* end provider  register page  */
+
+  /* customer page  */
+.body-banner {
+    padding: 7rem 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+/* account dashboard design  */
+.account-menu-item {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eee;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.profile-content .bg-secondary {
+  background-color: #f7f7f7 !important;
+}
+
+.card-custom {
+  -webkit-box-shadow: 0px 0px 30px 0px rgb(82 63 105 / 5%);
+  box-shadow: 0px 0px 30px 0px rgb(82 63 105 / 5%);
+  border: 0;
+  overflow: hidden;
+}
+/* CARD INNER CARD  */
+.card-header {
+  font-family: var(--bs-font-sans-serif);
+}
+.card-footer:last-child {
+  border-radius: 0 0 7(0.42rem - 1px) calc(0.42rem - 1px);
+}
+.card.card-custom > .card-body {
+  padding: 2rem 2.25rem !important;
+}
+.card-footer {
+  border-top: 1px solid #EBEDF3;
+}
+.card-header {
+  border-bottom: 1px solid #EBEDF3;
+}
+.card-counter-block .card-header {
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+  }
+  .card-connter-inner-body {
+    margin-top: -5.5rem;
+    padding: 1.5rem;
+  }
+  .card-counter {
+    border-radius: 1.2rem !important;
+  }
+  .letest-order {
+    margin-top: 2rem;
+}
+/* test  */
+.bg-widget {
+  background-position: right top;
+  background-size: 30% auto;
+  background-repeat: no-repeat !important;
+  
+}
+.skin-color-card .color-card {
+  height: 10.7rem;
+}
+.color-box {
+height: 4rem;
+width: 4rem;
+background-color: #e7e7e7;
+}
+.skin-color-card {
+height: 10rem;
+}
+.color-card {
+  height: 4.7rem;
+}
+.alca-card-shadow {
+  -webkit-box-shadow: 0 0 30px 0 rgb(82 63 105 / 5%);
+  box-shadow: 0 0 30px 0 rgb(82 63 105 / 5%);
+  border: 0;
+}
+/* dashboard card  */
+.bg-primary {
+  background-color: #e07c00  !important;
+}
+
+.bg-light-warning {
+  background-color: #fff4de !important;
+  color: #ffa800 !important;
+}
+.bg-light-primary {
+  background-color: #e1f0ff !important;
+  color: #e07c00 !important;
+}
+.bg-light-danger {
+  color: #F64E60 !important;
+  background-color: #FFE2E5 !important;
+}
+.bg-light-success {
+  color: #1BC5BD !important;
+  background-color: #C9F7F5 !important;
+}
+.bg-light-info {
+  color: #0d6efd;
+  background-color: #EEE5FF;
+}
+.text-danger {
+  color: #f64e60 !important;
+}
+.text-warning {
+  color: #ffa800 !important;
+}
+.text-success {
+  color: #1bc5bd !important;
+}
+.badge.bg-light-danger {
+  background-color: #FFE2E5 !important;
+  color: #F64E60 !important;
+}

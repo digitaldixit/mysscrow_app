@@ -117,7 +117,7 @@ class AccountTicketAdd extends Component {
             <div className="card-header">
               Service #{index+1}
             </div>
-            <div className="card-block">
+            <div className="card-body">
               <h5 className="card-title mb-3">{custom_service.service.name} : {custom_service.comment}</h5>
               <h6 className="card-subtitle mb-2 text-muted">
                 {custom_service.comment}
@@ -126,7 +126,7 @@ class AccountTicketAdd extends Component {
             <div className="image-block p-3 bg-light">
               Images
             </div>
-            <div className="card-block">
+            <div className="card-body">
               <div className="card-stripe">
                 <FieldArray name={"custom_service["+index+"][image]"} component={addMoreImage} />
               </div>

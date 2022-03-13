@@ -116,7 +116,7 @@ class ProviderAccountLogin extends Component {
                       Contractor Signin
                     </h3>
                   </div>
-                  <div className="card-block">
+                  <div className="card-body">
                     {errorMessage ? (
                       <div className="form-group">
                         <div className="col-sm-12">

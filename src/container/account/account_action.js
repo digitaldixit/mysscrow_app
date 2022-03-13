@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { API_URL } from '../../system/config';
 import cookie from 'react-cookie';
+import { API_URL } from '../../system/config';
 import { lib } from '../library/elements';
-var commonAction = require('../common/common_action');
 export const AUTHENTICATE_CUSTOMER = 'AUTHENTICATE_CUSTOMER';
 export const UNAUTHENTICATE_CUSTOMER = 'UNAUTHENTICATE_CUSTOMER';
 export const GET_SERVICES = 'GET_SERVICES';
@@ -24,6 +23,39 @@ export const FETCH_STATUSWISE_TICKETS = 'FETCH_STATUSWISE_TICKETS';
 export const NULL_CUSTOM_SERVICE = 'NULL_CUSTOM_SERVICE';
 export const FETCH_TICKET_INFO = 'FETCH_TICKET_INFO';
 
+// customer action code 
+export function login(formProps, callback) {
+  return function(dispatch) {
+    dispatch(validationNull());
+    axios({
+      method: 'post',
+      url: `${API_URL}/customer/account/login`,
+      data: {
+        props: formProps,
+      },
+    })
+    .then(response => {
+      cookie.remove('customer', { path: '/' });
+      if(response.data.customer !== undefined && response.data.error === undefined){
+        cookie.save('customer', response.data.customer, { path: '/' });
+        dispatch( { type: AUTHENTICATE_CUSTOMER, payload: response.data.customer } );
+         callback(null, true);
+      }
+      else {
+        if(response.data.error == "OTP" && response.data.phone) {
+          dispatch( { type: CUSTOMER_LOGIN_PHONE, payload: response.data.phone } );
+          callback(null, 'OTP');
+        } else {
+          dispatch(validation(response.data.error));
+          callback(null, false);
+        }
+      }
+    })
+    .catch(response => {
+      console.log("catch>>>>>", response);
+    });
+  }
+}
 export function register(formData, callback) {
   return function(dispatch) {
      dispatch(validationNull());
@@ -37,21 +69,16 @@ export function register(formData, callback) {
     .then(response => {
       if(!response.data.error && response.data.customer){
         dispatch( { type: CUSTOMER_LOGIN_PHONE, payload: formData.phone } );
-        callback(null, response);
+        callback(null, true);
       } else {
         dispatch(validation(response.data.error));
       }
     })
     .catch(response => {
-      if(response != undefined && response.data.error != undefined){
-        dispatch(validation(response.data.error));
-      } else {
-        dispatch(validation('Bad Signup Info'));
-      }
+      console.log("catch>>>>>", response);
     });
    }
 }
-
 export function loginOTP(formData, callback) {
     return function(dispatch) {
       axios({
@@ -76,7 +103,6 @@ export function loginOTP(formData, callback) {
       });
    }
 }
-
 export function resendOTP(phone, callback) {
     return function(dispatch) {
       axios({
@@ -87,7 +113,6 @@ export function resendOTP(phone, callback) {
         },
       })
       .then(response => {
-        console.log(response.data.error );
         if(response.data.error === undefined){
           lib.createAlert({message:'Your OTP has been send successfully'});
           callback(null, response);
@@ -100,6 +125,104 @@ export function resendOTP(phone, callback) {
       });
    }
 }
+export function otplogin(formProps, callback) {
+  return function(dispatch) {
+    dispatch(validationNull());
+    axios({
+      method: 'post',
+      url: `${API_URL}/customer/account/otp_login`,
+      data: {
+        props: formProps,
+      },
+    })
+    .then(response => {
+        if(!response.data.error) {
+          dispatch( { type: CUSTOMER_LOGIN_PHONE, payload: response.data.phone } );
+        //  browserHistory.push('/otp');
+        } else {
+          dispatch(validation(response.data.error));
+          callback(null, false);
+        }
+
+    })
+    .catch(response => {
+      console.log("catch>>>>>", response);
+    });
+  }
+}
+export function forgotPassword(email, callback) {
+  return function(dispatch) {
+    axios({
+       method: 'post',
+       url: `${API_URL}/customer/account/forgot-password`,
+       data: email,
+      })
+      .then(response => {
+        if(!response.data.error){
+          lib.createAlert({message : 'Your password reset link email has been sent to your email address, please check your email.'});
+          callback(null, response);
+        } else {
+          dispatch(validation(response.data.error));
+        }
+      })
+      .catch(response => {
+        dispatch(validation(response.data.error));
+      });
+  }
+}
+export function getProfile(){
+  return function(dispatch) {
+    axios({
+      method: 'get',
+      url: `${API_URL}/customer/account/profile`,
+      headers: {
+       customer: cookie.load('customer'),
+      },
+    })
+    .then(response => {
+      if(response != undefined && response.data != undefined && response.data.customer_id != undefined && response.data.customer_id > 0){
+        dispatch( { type: FETCH_ACCOUNT_PROFILE, payload: response} );
+      } else {
+        dispatch(logout());
+      }
+    })
+    .catch(response => {
+      if(response != undefined && response.data != undefined && response.data == "Unauthorized"){
+        dispatch(logout());
+      }
+    });
+  }
+}
+export function updateCustomerProfile(data, callback){
+  return function(dispatch) {
+    dispatch(validationNull());
+    axios.post(`${API_URL}/customer/account/update_profile`, data, {
+      headers: { customer: cookie.load('customer'), }
+    })
+    .then(response => {
+      //console.log("response>>>>>", response);
+      if(!response.data.error && response.data){
+        lib.createAlert({message : 'Your Profile Has Been Update Successfully!'});
+        dispatch( getProfile());
+        callback(null, true);
+      } else {
+        dispatch(validation(response.data.error));
+      }
+    })
+    .catch(response => {
+      dispatch(validation('Bad customer Update'));
+    });
+  }
+}
+export function logout() {
+  return function(dispatch) {
+    cookie.remove('customer', { path: '/' });
+    dispatch( { type: UNAUTHENTICATE_CUSTOMER } );
+  }
+}
+// add jobs
+
+// end customer action code 
 export function contractorRegister(formData, callback) {
   return function(dispatch) {
      dispatch(validationNull());
@@ -182,142 +305,6 @@ export function getProjects(){
     })
     .catch(response => {
     });
-  }
-}
-export function otplogin(formProps, callback) {
-  return function(dispatch) {
-    dispatch(validationNull());
-    axios({
-      method: 'post',
-      url: `${API_URL}/customer/account/otp_login`,
-      data: {
-        props: formProps,
-      },
-    })
-    .then(response => {
-        if(!response.data.error) {
-          dispatch( { type: CUSTOMER_LOGIN_PHONE, payload: response.data.phone } );
-        //  browserHistory.push('/otp');
-        } else {
-          dispatch(validation(response.data.error));
-          callback(null, false);
-        }
-
-    })
-    .catch(response => {
-      console.log("catch>>>>>", response);
-    });
-  }
-}
-
-export function login(formProps, callback) {
-  return function(dispatch) {
-    dispatch(validationNull());
-    axios({
-      method: 'post',
-      url: `${API_URL}/customer/account/login`,
-      data: {
-        props: formProps,
-      },
-    })
-    .then(response => {
-      cookie.remove('customer', { path: '/' });
-      if(response.data.customer !== undefined && response.data.error === undefined){
-        cookie.save('customer', response.data.customer, { path: '/' });
-        dispatch( { type: AUTHENTICATE_CUSTOMER, payload: response.data.customer } );
-     //   browserHistory.push('/');
-         callback(null, true);
-      }
-      else {
-        if(response.data.error == "OTP" && response.data.phone) {
-          dispatch( { type: CUSTOMER_LOGIN_PHONE, payload: response.data.phone } );
-         // browserHistory.push('/otp');
-        } else {
-          dispatch(validation(response.data.error));
-          callback(null, false);
-        }
-      }
-    })
-    .catch(response => {
-      console.log("catch>>>>>", response);
-    });
-  }
-}
-
-export function forgotPassword(email, callback) {
-  return function(dispatch) {
-    axios({
-       method: 'post',
-       url: `${API_URL}/customer/account/forgot-password`,
-       data: email,
-      })
-      .then(response => {
-        if(!response.data.error){
-          lib.createAlert({message : 'Your password reset link email has been sent to your email address, please check your email.'});
-          callback(null, response);
-        } else {
-          dispatch(validation(response.data.error));
-        }
-      })
-      .catch(response => {
-        console.log("----response.data.error",response)
-        dispatch(validation(response.data.error));
-      });
-  }
-}
-
-export function getProfile(){
-  return function(dispatch) {
-    axios({
-      method: 'get',
-      url: `${API_URL}/customer/account/profile`,
-      headers: {
-       customer: cookie.load('customer'),
-      },
-    })
-    .then(response => {
-      if(response != undefined && response.data != undefined && response.data.customer_id != undefined && response.data.customer_id > 0){
-        dispatch( { type: FETCH_ACCOUNT_PROFILE, payload: response} );
-      } else {
-        dispatch(logout());
-      }
-    })
-    .catch(response => {
-      if(response != undefined && response.data != undefined && response.data == "Unauthorized"){
-        dispatch(logout());
-      }
-    });
-  }
-}
-
-export function updateCustomerProfile(data, callback){
-
-  console.log("---data",data);
-  return function(dispatch) {
-    dispatch(validationNull());
-    axios.post(`${API_URL}/customer/account/update_profile`, data, {
-      headers: { customer: cookie.load('customer'), }
-    })
-    .then(response => {
-      //console.log("response>>>>>", response);
-      if(!response.data.error && response.data){
-        lib.createAlert({message : 'Your Profile Has Been Update Successfully!'});
-        dispatch( getProfile());
-        callback(null, true);
-      } else {
-        dispatch(validation(response.data.error));
-      }
-    })
-    .catch(response => {
-      dispatch(validation('Bad customer Update'));
-    });
-  }
-}
-
-export function logout() {
-  return function(dispatch) {
-    cookie.remove('customer', { path: '/' });
-    dispatch( { type: UNAUTHENTICATE_CUSTOMER } );
   }
 }
 
@@ -416,14 +403,12 @@ export function updateProviderProfile(data, callback){
     });
   }
 }
-
 export function addCustomService(formProps, callback){
   return function(dispatch) {
     dispatch( { type: ADD_CUSTOM_SERVICE, payload: formProps } );
     callback(null, true);
   };
 }
-
 export function removeCustomService(index, callback){
   return function(dispatch) {
     dispatch( { type: REMOVE_CUSTOM_SERVICE, payload: index } );

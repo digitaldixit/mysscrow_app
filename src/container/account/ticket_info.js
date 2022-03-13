@@ -55,7 +55,7 @@ class AccountTicketAdd extends Component {
                 {service.status}
               </span>
             </div>
-            <div className="card-block p-1">
+            <div className="card-body p-1">
                       <div className="row">
                           <div className="col-sm-12">
                             <h5 className="card-title">
@@ -84,7 +84,7 @@ class AccountTicketAdd extends Component {
                               <div className="image-block mt-2">
                                 Images
                               </div>
-                              <div className="card-block p-0">
+                              <div className="card-body p-0">
                                 <div className="card-stripe">
                                   <ul className="card-stripe-ul">
                                     {this.renderServiceImages(service.service_id, service.images,photoLightboxIndex, isLightboxOpen)}

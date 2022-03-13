@@ -35,7 +35,7 @@ class Input extends Component {
         <>
           {inputLabel}
           <div className="input-group">
-            <span className="input-group-addon sk-btnbox mr-0"><i className={icon}></i></span>
+            <span className="input-group-text"><i className={icon}></i></span>
             <input {...input} placeholder={label} type={type} className="form-control" />
           </div>
           {meta.touched && ((meta.error && <span className="error">{meta.error}</span>) || (meta.warning && <span className="error">{meta.warning}</span>))}
