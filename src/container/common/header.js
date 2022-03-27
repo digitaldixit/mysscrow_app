@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import cookie from "react-cookie";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProfile, getProviderProfile } from "../account/account_action";
+import { getProfile  } from "../account/account_action";
+import { getContractorProfile } from "../contractor/contractor_action";
 import { lib } from "../library/elements";
 class CommonHeader extends Component {
   customerProfile() {
@@ -10,13 +11,14 @@ class CommonHeader extends Component {
       this.props.getProfile();
     }
   }
-  ProviderProfile() {
-    if (cookie.load("provider") && !this.props.provider_profile) {
-      this.props.getProviderProfile();
+  ContractorProfile() {
+    if (cookie.load("contractor") && !this.props.contractor_profile) {
+      this.props.getContractorProfile();
     }
   }
 
   renderAccountLinks() {
+
     if (cookie.load("customer") && this.props.account_profile) {
       return [
         <li className="dropdown haccount-dropdown" key="header.customer.li">
@@ -25,10 +27,8 @@ class CommonHeader extends Component {
             className="dropdown-toggle btn btn-outline-secondary"
             data-toggle="dropdown"
           >
-            <i className="fa fa-user fa-account"></i>{" "}
-            <span className="hidden-lg-down">
-              {lib.ucwords(this.props.account_profile.name)}{" "}
-            </span>
+            <i className="fa fa-user fa-account m-1"></i>{" "}
+              {lib.ucwords(this.props.account_profile.firstname + " " + this.props.account_profile.lastname)}{" "}
             <span className="caret"></span>
           </Link>
           <ul className="dropdown-menu">
@@ -38,13 +38,13 @@ class CommonHeader extends Component {
               </Link>
             </li>
             <li>
-              <Link to="/account/ticket/add">
-                <i className="fa fa-plus"></i> Create Ticket
+              <Link to="/account/job">
+                <i className="fa fa-list"></i> Jobs
               </Link>
             </li>
             <li>
-              <Link to="/account/ticket">
-                <i className="fa fa-life-ring"></i> Active Tickets
+              <Link to="/account/job/add">
+                <i className="fa fa-plus"></i> Ceate Job
               </Link>
             </li>
             <li>
@@ -55,33 +55,31 @@ class CommonHeader extends Component {
           </ul>
         </li>,
       ];
-    } else if (cookie.load("provider") && this.props.provider_profile) {
+    } else if (cookie.load("contractor") && this.props.contractor_profile) {
       return [
-        <li className="dropdown haccount-dropdown" key="header.customer.li">
+        <li className="dropdown haccount-dropdown" key="header.contractor.li">
           <Link
             title="My Account"
             className="dropdown-toggle btn btn-outline-secondary"
             data-toggle="dropdown"
           >
-            <i className="fa fa-wrench"></i>{" "}
-            <span className="hidden-lg-down">
-              {lib.ucwords(this.props.provider_profile.name)}{" "}
-            </span>
+            <i className="fa fa-user fa-account m-1"></i>{" "}
+              {lib.ucwords(this.props.contractor_profile.firstname + " " + this.props.contractor_profile.lastname)}{" "}
             <span className="caret"></span>
           </Link>
           <ul className="dropdown-menu">
             <li>
-              <Link to="/provider">
+              <Link to="/contractor_account">
                 <i className="fa fa-user"></i> Dashboard
               </Link>
             </li>
             <li>
-              <Link to="/provider/ticket">
-                <i className="fa fa-life-ring"></i> Active Tickets
+              <Link to="/contractor/job">
+                <i className="fa fa-list"></i> Jobs
               </Link>
             </li>
             <li>
-              <Link to="/provider_logout">
+              <Link to="/contractor_logout">
                 <i className="fa fa-power-off"></i> Logout
               </Link>
             </li>
@@ -115,16 +113,17 @@ class CommonHeader extends Component {
   render() {
     const {
       authenticated,
-      authenticate_provider,
+      authenticated_contractor,
       account_profile,
-      provider_profile,
+      contractor_profile,
     } = this.props;
+
 
     return (
       <header className="header">
         <alertTop />
         {this.customerProfile()}
-        {this.ProviderProfile()}
+        {this.ContractorProfile()}
         <div className="header-top hidden-md-down">
           <nav>
             <div className="container">
@@ -135,11 +134,6 @@ class CommonHeader extends Component {
 
                 <div className="justify-content-start" id="mobile-navigation">
                   <ul className="ml-4 navbar-nav">
-                    {/* <li className="nav-item">
-                      <Link aria-current="page" className="nav-link" to="/">
-                        Home
-                      </Link>
-                    </li> */}
                     <li className="nav-item">
                       <Link
                         aria-current="page"
@@ -178,11 +172,11 @@ class CommonHeader extends Component {
 function mapStateToProps(state) {
   return {
     authenticated: state.account.authenticated,
-    authenticate_provider: state.account.authenticate_provider,
+    authenticated_contractor: state.contractor.authenticated,
     account_profile: state.account.profile,
-    provider_profile: state.account.provider_profile,
+    contractor_profile: state.contractor.contractor_profile,
   };
 }
-export default connect(mapStateToProps, { getProfile, getProviderProfile })(
+export default connect(mapStateToProps, { getProfile, getContractorProfile })(
   CommonHeader
 );

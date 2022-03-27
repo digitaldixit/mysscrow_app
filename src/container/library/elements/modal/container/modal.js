@@ -19,7 +19,6 @@ class Modal extends Component {
   }
 
   render() {
-    //console.log("this.props>>>>>>", this.props);
     var modalClass = 'medium';
     if(this.props.options.size !== undefined && this.props.options.size){
       modalClass = this.props.options.size;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { getProjects, updateCustomerProfile } from "../account/account_action";
+import {  updateCustomerProfile } from "../account/account_action";
 import { input } from "../library/elements";
 import { IMAGE_URL } from "../../system/config";
 class UpdateProfile extends Component {
@@ -14,9 +14,6 @@ class UpdateProfile extends Component {
       isPasswordText: false,
       isPasswordConfirmText: false,
     };
-  }
-  componentWillMount() {
-    this.props.getProjects();
   }
   handleProfileSubmit(formProps) {
     this.state = { isLoading: true };
@@ -44,7 +41,7 @@ class UpdateProfile extends Component {
 
   addDefaultSrc(ev) {
     return (ev.target.src =
-      IMAGE_URL + "/" + "profile/User-default-image-boy.png");
+      "https://www.w3schools.com/howto/img_avatar.png");
   }
 
   renderPasswordMask(getState) {
@@ -61,24 +58,9 @@ class UpdateProfile extends Component {
       this.setState({ [getState]: false });
     }
   }
-  renderProject(projects) {
-    if (projects) {
-      return projects.map((project) => {
-        return (
-          <option
-            value={project.project_id}
-            key={"project." + project.project_id}
-          >
-            {project.name}
-          </option>
-        );
-      });
-    } else {
-      return <option value="0">Loading...</option>;
-    }
-  }
+
   render() {
-    const { handleSubmit, errorMessage, projects } = this.props;
+    const { handleSubmit, errorMessage } = this.props;
     var { isLoading, isPasswordText, isPasswordConfirmText } = this.state;
 
     if (errorMessage) {
@@ -116,7 +98,7 @@ class UpdateProfile extends Component {
                                 ? image.input.value.dataUrl
                                 : image.input.value
                             }
-                            className="m-l-10"
+                            className="img-thumbnail img-raised rounded-circle"
                             width="100"
                             height="100"
                           />
@@ -326,7 +308,6 @@ function mapStateToProps(state) {
   return {
     initialValues: iniCus,
     errorMessage: state.account.error,
-    projects: state.account.projects,
   };
 }
 
@@ -335,6 +316,6 @@ UpdateProfile = reduxForm({
   validate: validate,
 })(UpdateProfile);
 
-export default connect(mapStateToProps, { updateCustomerProfile, getProjects })(
+export default connect(mapStateToProps, { updateCustomerProfile })(
   UpdateProfile
 );

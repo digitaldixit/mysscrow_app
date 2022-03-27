@@ -173,7 +173,6 @@ export function changeURL(city_name, keyword){
 
 //title, summary, details, severity, dismissible, autoDismiss, appendToId
 export function createAlert(alert_data) {
-  console.log("----alert_data",alert_data);
   //https://codepen.io/codysechelski/pen/dYVwjb?q=alert&limit=all&type=type-pens
   if(alert_data.type == undefined || !alert_data.type){
     alert_data.class = 'success';
@@ -285,7 +284,6 @@ export function getFullYear() {
 
 export function formatDateForDifference(date) {
   var d = new Date(date), month = '' + (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear();
-  //console.log(month+"::"+day+"::"+year);
   if (month.length < 2) month = '0' + month;
   if (day.length < 2) day = '0' + day;
   return [year, month, day].join('-');

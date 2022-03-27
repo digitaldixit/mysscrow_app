@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link,withRouter  } from "react-router-dom";
 import { Field, reduxForm } from 'redux-form';
-import { forgotPassword } from '../account/account_action';
+import { forgotPassword ,validationNull} from '../account/account_action';
 import { input } from '../library/elements';
 
 class ModalAccountFrogotPassword extends Component {
@@ -14,7 +14,9 @@ class ModalAccountFrogotPassword extends Component {
     this.removeModal = this.handleFormSubmit.bind(this);
    this.state = { isButtonLoading:false };
   }
-
+  componentDidMount() {
+    this.props.validationNull();
+  }
 
   handleFormSubmit(formProps) {
   this.state = { isButtonLoading:true };
@@ -111,6 +113,6 @@ ModalAccountFrogotPassword = reduxForm({
   validate: validate
 })(ModalAccountFrogotPassword);
 
-export default withRouter(connect(mapStateToProps, { forgotPassword })(
+export default withRouter(connect(mapStateToProps, { forgotPassword,validationNull })(
   (ModalAccountFrogotPassword)
   ));

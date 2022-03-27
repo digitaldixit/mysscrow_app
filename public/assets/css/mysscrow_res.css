@@ -205,10 +205,7 @@ span.badge {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
-.single-services {
-  padding: 1.5px;
-  margin-bottom: 10px;
-}
+
 .services-area {
     padding-bottom: 10px;
 }
@@ -231,9 +228,7 @@ span.badge {
 .single-services .icon {
     margin-top: 1.5rem;
 }
-.single-services h3 {
-    font-size: 13px;
-}
+
 .single-services .icon {
     background: #f4f6fd;
     display: inline-block;

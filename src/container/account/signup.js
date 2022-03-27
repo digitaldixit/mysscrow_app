@@ -34,25 +34,17 @@ class Signup extends Component {
     });
   }
 
-  renderPasswordMask(getState) {
-    if (this.state[getState] === false) {
-      this.setState({ [getState]: true });
-    } else {
-      this.setState({ [getState]: false });
-    }
+  renderPasswordMask() {
+      this.setState({isPasswordText : !this.state.isPasswordText});
+
   }
   renderConfirmPasswordMask(getState) {
-    if (this.state[getState] === false) {
-      this.setState({ [getState]: true });
-    } else {
-      this.setState({ [getState]: false });
-    }
+    this.setState({isPasswordConfirmText : !this.state.isPasswordConfirmText});
   }
 
   render() {
     const { handleSubmit } = this.props;
     var { isLoading, isPasswordText, isPasswordConfirmText } = this.state;
-
     return (
       <div id="content-container" className="cm-frm signup pt-5 pb-5">
         {isLoading ? <LoadingLarge /> : ""}
@@ -123,36 +115,36 @@ class Signup extends Component {
               </div>
               <div className=" row mb-3">
                 <div className="col-sm-6 form-group">
-                  <div className="input-group">
-                    {isPasswordText ? (
-                      <Field
-                        name="password"
-                        type="text"
-                        component={input}
-                        label="* Password"
-                        className="form-control"
-                      />
-                    ) : (
-                      <Field
-                        name="password"
-                        type="password"
-                        component={input}
-                        label="* Password"
-                        className="form-control"
-                      />
-                    )}
-                    <button
-                      type="button"
-                      className="input-group-text"
-                      onClick={() => this.renderPasswordMask("isPasswordText")}
-                    >
-                      {isPasswordText ? (
-                        <i className="fa fa-eye"></i>
-                      ) : (
-                        <i className="fa fa-eye-slash"></i>
-                      )}
-                    </button>
-                  </div>
+                <div className="input-group">
+                 {isPasswordText ? (
+                   <Field
+                     name="password"
+                     type="text"
+                     component={input}
+                     label="* Password"
+                     className="form-control"
+                   />
+                 ) : (
+                   <Field
+                     name="password"
+                     type="password"
+                     component={input}
+                     label="* Password"
+                     className="form-control"
+                   />
+                 )}
+                 <button
+                   type="button"
+                   className="input-group-text"
+                   onClick={() => this.renderPasswordMask("isPasswordText")}
+                 >
+                   {isPasswordText ? (
+                     <i className="fa fa-eye"></i>
+                   ) : (
+                     <i className="fa fa-eye-slash"></i>
+                   )}
+                 </button>
+               </div>
                 </div>
                 <div className="col-sm-6">
                   <div className="input-group">
@@ -240,8 +232,6 @@ function validate(formProps) {
   }
   if (!formProps.password) {
     errors.password = "Required Password";
-  } else if (formProps.password.length < 6) {
-    errors.password = "Password must more than 6 characters";
   }
   if (!formProps.confirm_password) {
     errors.confirm_password = "Required Confirm Password";

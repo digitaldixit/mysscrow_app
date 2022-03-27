@@ -4,8 +4,6 @@ const emitter = new EventEmitter();
 export const EE = emitter;
 export const modalEmitter = {
   add: function add(component, options) {
-    //console.log("modal component>>>>>>>", component);
-    //console.log("modal options>>>>>>>>>", options);
     return emitter.emit('add/modal', { component: component, options: options });
   },
   remove: function remove(id) {

@@ -4,15 +4,18 @@ import Signup from "./signup";
 import customer from "../../images/customer.jpg";
 import cookie from "react-cookie";
 import { connect } from "react-redux";
+import { validationNull } from "./account_action";
 class Customer extends Component {
+  
   componentDidMount() {
+    this.props.validationNull();
     if (cookie.load("customer")) {
       this.props.history.push("/account");
     }
   }
 
   render() {
-    const { handleSubmit, authenticated, errorMessage } = this.props;
+    const {errorMessage } = this.props;
     var background_image = {
       background:
         "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(" +
@@ -61,4 +64,4 @@ function mapStateToProps(state) {
     errorMessage: state.account.error,
   };
 }
-export default connect(mapStateToProps)(Customer);
+export default connect(mapStateToProps,{validationNull})(Customer);

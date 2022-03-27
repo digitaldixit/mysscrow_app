@@ -9,6 +9,13 @@ import { IMAGE_URL } from "../../system/config";
 import AccountLogin from "../account/signin";
 
 class CustomerHeader extends Component {
+
+  componentDidMount() {
+    if (!cookie.load("customer")) {
+      this.props.history.push("/customer");
+    }
+  }
+
   addEditProfileModal() {
     modal.add(UpdateProfile, {
       title: "Edit Profile",
@@ -20,9 +27,7 @@ class CustomerHeader extends Component {
   }
   render() {
     const { account_profile } = this.props;
-    if (!cookie.load("customer")) {
-      return <AccountLogin />;
-    }
+ 
     var image;
     if (
       account_profile &&
@@ -133,26 +138,26 @@ class CustomerHeader extends Component {
             }
             to="/account"
           >
-            <i className="bi bi-laptop fs-lg opacity-60 me-2"></i>Dashboard
+            <i className="fa fa-laptop fs-lg opacity-60 me-2"></i>Dashboard
           </Link>
           <Link
             className={
               "account-menu-item d-flex align-items-center nav-link-style" +
-              (currentLink == "/account/ticket" ||
-              currentLink.indexOf("/account/ticket") >= 0
+              (currentLink == "/account/job" ||
+              currentLink.indexOf("/account/job") >= 0
                 ? " active"
                 : "")
             }
-            to="/account/ticket"
+            to="/account/job"
           >
-            <i className="bi bi-bag-check fs-lg opacity-60 me-2"></i>Jobs
+            <i className="fa fa-list fs-lg opacity-60 me-2"></i>Jobs
           </Link>
 
           <Link
             className="account-menu-item d-flex align-items-center nav-link-style"
             to="/logout"
           >
-            <i className="bi bi-box-arrow-right fs-lg opacity-60 me-2"></i>
+            <i className="fa fa-power-off   fs-lg opacity-60 me-2"></i>
             Logout
           </Link>
         </div>

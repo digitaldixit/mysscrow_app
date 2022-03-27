@@ -17,7 +17,6 @@ class ReduxModal extends Component {
 
   render() {
     const { modals } = this.props;
-    //console.log("modals>>>>>>>>", modals);
     return (
       <div className="react-redux-modal">
         <div className="rr-modals">

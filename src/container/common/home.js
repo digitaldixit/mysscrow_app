@@ -4,18 +4,10 @@ var ReactRotatingText = require("react-rotating-text");
 class CommonHome extends Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: false };
   }
 
-  componentWillMount() {
-    this.setState({ isLoading: true });
-    var _this = this;
-  }
 
   render() {
-    const {} = this.props;
-    const isLoading = this.state.isLoading;
-
     return (
       <div className="common-home">
         <div className="first-section">

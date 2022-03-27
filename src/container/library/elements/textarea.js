@@ -4,7 +4,6 @@ class textarea extends Component {
 
 
   render() {
-    //console.log(this.props);
     const { input, icon, label, is_label, type, meta } = this.props;
     var inputLabel = '';
     if(is_label) {

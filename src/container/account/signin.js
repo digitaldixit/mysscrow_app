@@ -10,7 +10,7 @@ import { login } from "./account_action";
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: false, isError: "" };
+    this.state = { isLoading: false, isError: "",isPasswordText: false, };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
@@ -31,7 +31,13 @@ class SignIn extends Component {
       }
     });
   }
-
+  renderPasswordMask(getState) {
+    if (this.state[getState] === false) {
+      this.setState({ [getState]: true });
+    } else {
+      this.setState({ [getState]: false });
+    }
+  }
   renderAlert() {
     if (this.props.errorMessage) {
       this.setState({ isButtonLoading: false });
@@ -57,7 +63,7 @@ class SignIn extends Component {
     const { handleSubmit, authenticated, errorMessage } = this.props;
     let isLoading = this.state.isLoading;
     let isError = this.state.isError;
-
+    let isPasswordText = this.state.isPasswordText
     if (errorMessage) {
       isLoading = false;
     }
@@ -82,14 +88,40 @@ class SignIn extends Component {
                 </div>
               </div>
               <div className="form-group">
-                <div className="col-sm-12 p-0 position-relative has-icon-left">
-                  <Field
-                    name="password"
-                    type="password"
-                    component={input}
-                    label="Password"
-                  />
-                </div>
+              <div className="col-sm-12 p-0 position-relative has-icon-left">
+               
+               <div className="input-group">
+                 {isPasswordText ? (
+                   <Field
+                     name="password"
+                     type="text"
+                     component={input}
+                     label="* Password"
+                     className="form-control"
+                   />
+                 ) : (
+                   <Field
+                     name="password"
+                     type="password"
+                     component={input}
+                     label="* Password"
+                     className="form-control"
+                   />
+                 )}
+                 <button
+                   type="button"
+                   className="input-group-text"
+                   onClick={() => this.renderPasswordMask("isPasswordText")}
+                 >
+                   {isPasswordText ? (
+                     <i className="fa fa-eye"></i>
+                   ) : (
+                     <i className="fa fa-eye-slash"></i>
+                   )}
+                 </button>
+               </div>
+         
+             </div>
               </div>
               <div className="form-group row text-right">
                 <div className="col-sm-12">

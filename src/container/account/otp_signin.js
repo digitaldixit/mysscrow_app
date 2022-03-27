@@ -15,11 +15,6 @@ class AccountOTPLogin extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-    componentWillMount(){
-      if(this.props.authenticated == true && this.props.account_profile != undefined){
-        // browserHistory.push('/account');
-      }
-    }
     handleFormSubmit(formProps) {
       this.setState({ isError: '' });
       this.setState({ isLoading: true });
@@ -28,7 +23,7 @@ class AccountOTPLogin extends Component {
         if(!result) {
           _this.setState({ isLoading: false });
         } else {
-        //  browserHistory.push('/account');
+          _this.props.history.push("/account");
           _this.setState({ isLoading: false });
 
         }
@@ -75,7 +70,7 @@ class AccountOTPLogin extends Component {
               <div className="col-sm-6">
                 <div className="card">
 
-                      <div className="card-header"><h5 className="m-0"> Resident Sign In</h5></div>
+                      <div className="card-header"><h5 className="m-0"> Customer Sign In</h5></div>
                       <div className="card-body">
                         {
                           errorMessage

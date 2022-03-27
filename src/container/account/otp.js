@@ -14,9 +14,9 @@ class AccountOtp extends Component {
   }
 
   componentWillMount(){
-    if(!this.props.login_phone){
-    this.props.history.push('/otp_signin');
-    }
+    // if(!this.props.login_phone){
+    // this.props.history.push('/otp_signin');
+    // }
   }
 
   handleFormSubmit(formProps) {

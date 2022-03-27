@@ -9,7 +9,6 @@ class AlertTop extends Component {
 
   render() {
     const { alert } = this.props;
-    console.log("----alert",alert);
     if(alert !== undefined && alert.message) {
       setTimeout(() => {
         this.removeAlert();
